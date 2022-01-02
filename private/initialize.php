@@ -28,4 +28,11 @@ define("SHARED_PATH", PRIVATE_PATH . '/shared');
 /*
   * Add all the files needed for the site
 */
+require_once 'db_crendentials.php';
+require_once 'db_functions.php';
 require_once 'functions.php';
+
+/*
+ * Connect to the database
+*/
+$db = db_connect();

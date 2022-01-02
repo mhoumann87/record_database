@@ -7,6 +7,9 @@
   <title><?php echo isset($page_title)  ? $page_title : 'The Record Database' ?></title>
 </head>
 <body>
+  <?php if (isset($msg)) {
+    echo $msg;
+  } ?>
   <h1>Header</h1>
 </body>
 </html>

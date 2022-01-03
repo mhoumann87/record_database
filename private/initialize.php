@@ -25,10 +25,12 @@ define("PROJECT_PATH", dirname(PRIVATE_PATH));
 define("PUBLIC_PATH", PROJECT_PATH . '/public');
 define("SHARED_PATH", PRIVATE_PATH . '/shared');
 
+
+
 /*
   * Add all the files needed for the site
 */
-require_once 'db_crendentials.php';
+require_once 'db_credentials.php';
 require_once 'db_functions.php';
 require_once 'functions.php';
 

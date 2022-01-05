@@ -25,7 +25,15 @@ define("PROJECT_PATH", dirname(PRIVATE_PATH));
 define("PUBLIC_PATH", PROJECT_PATH . '/public');
 define("SHARED_PATH", PRIVATE_PATH . '/shared');
 
-
+/*
+ * Assign the root URL to a PHP constant
+ * - Do not need to include the domain
+ * - Use the same document root as webserver
+*/
+$public_end = strpos($_SERVER['SCRIPT_NAME'], '/public');
+$public_end = $public_end + 7;
+$doc_root = substr($_SERVER['SCRIPT_NAME'], 0, $public_end);
+define('WWW_ROOT', $doc_root);
 
 /*
   * Add all the files needed for the site
@@ -33,8 +41,8 @@ define("SHARED_PATH", PRIVATE_PATH . '/shared');
 require_once 'db_credentials.php';
 require_once 'db_functions.php';
 require_once 'functions.php';
-
 /*
+
  * Connect to the database
 */
 $db = db_connect();

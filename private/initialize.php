@@ -41,8 +41,28 @@ define('WWW_ROOT', $doc_root);
 require_once 'db_credentials.php';
 require_once 'db_functions.php';
 require_once 'functions.php';
-/*
 
+/*
+  * Load class definitions manually
+  * All classes in directory 
+*/
+foreach (glob('classes/*.class.php') as $file) {
+  require_once($file);
+}
+
+/*
+  * Instead of manually loading the classes,
+  * you can also autoload the class definitions 
+*/
+function my_autoload($class)
+{
+  if (preg_match('/\A\w+\Z/'.$class)) {
+    include 'classes/'.$class.'.class.php';
+  }
+}
+spl_autoload_register('my_autoload');
+
+/*
  * Connect to the database
 */
 $db = db_connect();

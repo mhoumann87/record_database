@@ -42,6 +42,7 @@ require_once 'db_credentials.php';
 require_once 'db_functions.php';
 require_once 'functions.php';
 require_once 'validation_functions.php';
+require_once 'status_error_functions.php';
 
 /*
   * Load class definitions manually
@@ -57,7 +58,7 @@ foreach (glob('classes/*.class.php') as $file) {
 */
 function my_autoload($class)
 {
-  if (preg_match('/\A\w+\Z/'.$class)) {
+  if (preg_match('/\A\w+\Z/', $class)) {
     include 'classes/'.$class.'.class.php';
   }
 }
@@ -67,3 +68,9 @@ spl_autoload_register('my_autoload');
  * Connect to the database
 */
 $db = db_connect();
+
+// Create the DatabaseObject
+DatabaseObject::set_database($db);
+
+// Open a session
+$session = new Session;

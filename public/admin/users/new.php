@@ -6,13 +6,15 @@
 
 if (is_post_request()) {
 
+  $args = $_POST['user'];
+  $user = new User($args);
+
+
 } else {
 // Display the form
 $user = new User;
 }
 ?>
-
-
 
 
 <?php include SHARED_PATH.'/admin_header.php'; ?>

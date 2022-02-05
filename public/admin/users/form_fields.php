@@ -9,7 +9,7 @@
 ?>
 
 
-<label for="user[username]">Username:
+<label for="user[username]">Username (Min. 4 characters):
   <input 
       type="text" 
       name="user[username]"
@@ -42,7 +42,7 @@
   />
 </label>
 
-<label for="user[password]">Password:
+<label for="user[password]">Password (min. 8 characters, 1 uppercase letter, 1lowercase letter and 1 number): 
   <input 
     type="password"
     name="user[password]"

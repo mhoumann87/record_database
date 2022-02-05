@@ -57,7 +57,12 @@
 </label>
 
 <!-- TODO! This check box is only for admins to check -->
+<?php
+
+if ($user->is_admin == 1) {
   
+?>
+
 <label for="user[is_admin]">Administrator:
   <input 
     type="radio"
@@ -74,3 +79,6 @@
     />Yes
 </label>
 
+<?php
+}
+?>

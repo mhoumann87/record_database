@@ -11,4 +11,35 @@ class DatabaseObject
   {
     self::$db = $db;
   }
+
+  /*
+    * CRUD operations 
+  */
+
+  // Create
+
+  protected function create()
+  {
+    $this->validate();
+
+    if (!empty($this->errors)) {
+      return false;
+    }
+
+    $attributes = $this->sanitized_attributes();
+
+    $sql  = "INSERT INTO ".static::table_name." (";
+    $sql .= join(', ', array_keys($attributes));
+    $sql .= ") VALUES ('";
+    $sql .= join("', '", array_values($attributes));
+    $sql .= "')";
+
+    $result = self::$db->query($sql);
+
+    if ($result) {
+      $this->id = self::$db->insert_id;
+    }
+
+    return $result;
+  }// end create()
 }// End DatabaseObject
